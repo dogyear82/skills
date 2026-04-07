@@ -1,0 +1,3 @@
+interface:
+  display_name: "Create Story"
+  short_description: "Break requests into tracker-ready stories"
