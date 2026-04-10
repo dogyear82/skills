@@ -28,7 +28,7 @@ Use an `implementer` once the task is clear enough to execute. Keep the worktree
 Run the smallest relevant checks first. Use a `tester` when stronger regression or boundary-case coverage is needed.
 
 6. Run independent review.
-Use a `reviewer` after implementation and testing. Resolve material findings before treating the work as complete.
+Use a `reviewer` after implementation and testing. Review the work in PR style against the current baseline, looking for bugs, regressions, missing tests, risky assumptions, and scope mismatches. Resolve material findings, then review again. Repeat the review-and-fix loop until no further material issues are found.
 
 ## Conditional Agent Use
 
@@ -49,6 +49,7 @@ Prefer repo-local agents over global agents for the same role.
 - Do not create branches for this workflow.
 - Do not create commits as part of this workflow.
 - Do not assume the request is complete or well-scoped; normalize it first.
+- Before treating the work as complete, complete the PR-style review loop described in step 6.
 - Prefer the smallest working increment over broad scope expansion.
 - Follow the ordered workflow; do not skip directly to implementation unless the earlier stages are already clearly satisfied.
 - Use repo-local instructions and agent definitions when they conflict with global defaults.
@@ -60,7 +61,7 @@ Treat the work as complete only when all of the following are true:
 
 - The implemented behavior matches the normalized acceptance criteria.
 - Relevant tests pass, or any missing verification is stated explicitly.
-- Reviewer findings are resolved or documented as non-blocking with clear rationale.
+- The step 6 PR-style review loop no longer surfaces material issues, and any remaining findings are documented as non-blocking with clear rationale.
 - No commit was created as part of the workflow.
 
 ## References
