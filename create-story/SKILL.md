@@ -28,7 +28,7 @@ Break the request into the smallest sensible set of stories: distinct outcomes, 
 Use the product owner to convert the analysis into tracker-ready stories with:
 - clear summary
 - concise description
-- acceptance criteria
+- testable acceptance criteria
 - dependencies or ordering notes
 - scope boundaries
 
@@ -43,6 +43,7 @@ Use agents only at the stage where they add value:
 - `researcher` during repository inspection when context is unclear
 - `architect` during design-risk analysis when boundaries affect the story split
 - `debugger` during analysis when failure or regression context affects decomposition
+- `prompt_engineer` when refining instructions, constraints, or agent prompts to ensure consistent, deterministic outputs
 
 Do not use implementer, tester, or reviewer agents for this skill unless the request has drifted into execution rather than story creation.
 

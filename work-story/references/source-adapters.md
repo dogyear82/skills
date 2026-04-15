@@ -40,3 +40,4 @@ If the story is poorly defined:
 - Avoid noisy progress comments.
 - Record blockers when they affect scope, timeline, or handoff.
 - Prefer concise updates that explain what was implemented, how it was verified, and why the item is now ready for review.
+- Always start comments on a story with [codex]

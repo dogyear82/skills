@@ -38,7 +38,7 @@ Run the smallest relevant checks first. Use a `tester` when behavior needs stron
 Use a `reviewer` after implementation and testing. Review the work in PR style against the default integration branch, looking for bugs, regressions, missing tests, risky assumptions, and scope mismatches. Resolve material findings, then review again. Repeat the review-and-fix loop until no further material issues are found.
 
 9. Update the tracker.
-When the story is implemented, tested, and reviewed to a clean state, update the work item and move it to `In Review`. If the environment supports it, prepare or open a Pull Request targeting the default integration branch. If progress is blocked by something that requires human intervention, such as a missing external dependency, unavailable credential, inaccessible system, or unclear requirement that cannot be responsibly inferred, move the work item to `Blocked` instead and leave a comment that explains why it is blocked and what is needed to unblock it.
+When the story is implemented, tested, and reviewed to a clean state, update the work item and move it to `In Review`, and leaving clear manual testing instructions in the comments. If the environment supports it, prepare or open a Pull Request targeting the default integration branch. If progress is blocked by something that requires human intervention, such as a missing external dependency, unavailable credential, inaccessible system, or unclear requirement that cannot be responsibly inferred, move the work item to `Blocked` instead and leave a comment that explains why it is blocked and what is needed to unblock it.
 
 ## Conditional Agent Use
 
