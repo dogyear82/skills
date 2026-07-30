@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan Implementation"
+  short_description: "Create code-informed implementation plans"
+  default_prompt: "Use $plan-implementation to create a detailed implementation plan for this work item."
