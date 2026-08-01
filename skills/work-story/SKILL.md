@@ -18,29 +18,17 @@ Retrieve the named story from its tracker, or use the story text supplied by the
 Read the applicable `AGENTS.md`, repository documentation, and tracker guidance before assessing or changing anything. Determine the repository's default integration branch from local instructions, repository metadata, or remote HEAD.
 
 3. Run the readiness gate with `$analyze-requirements`.
-Apply its normalization, ambiguity detection, and sufficiency checks to the story. Use the repository's Definition of Ready when one exists. Otherwise require:
+Apply its relevance, atomicity, complete-slice, and acceptance-criteria checks to the story. Also apply the repository's Definition of Ready when one exists. At minimum require:
 
-- a clear problem and outcome
-- testable acceptance criteria
-- a smallest coherent end-to-end scope
-- a manual verification path
-- clarified material assumptions
-- no unanswered question that prevents safe implementation
+- a current unmet need
+- one coherent outcome
+- a complete, observable, and testable slice
+- clear and testable acceptance criteria
 
-Use `$analyze-requirements` only for this readiness decision; do not create its requirements artifact during the gate.
+Treat the story as ready only when `$analyze-requirements` returns `Ready` and any additional repository criteria pass.
 
 4. Stop if the story is not ready.
-Do not create a branch, worktree, implementation plan, or goal. Respond only with:
-
-```text
-Not ready: <short reason>
-
-Options:
-- <specific way to resolve the gap>
-- <another option only when useful>
-```
-
-Keep the explanation short. Ask a question only when the user can make the story ready by answering it immediately.
+Do not create a branch, worktree, implementation plan, or goal. Return the analysis skill's concise reasons and options. Ask a question only when the user can make the story ready by answering it immediately.
 
 5. Create an isolated worktree from the latest default branch.
 Fetch the default branch from its remote. Confirm the story does not already have an active branch or worktree that would conflict. Follow repository naming and worktree-location conventions; otherwise use `agent/<story-key>-<short-slug>` and a sibling worktree named `<repository>-<story-key>-<short-slug>`. Create both from the fetched remote default branch. Perform all remaining work inside the new worktree.
