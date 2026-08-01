@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work Story"
+  short_description: "Take a ready story through implementation"
+  default_prompt: "Use $work-story to validate and complete this story through a ready-for-review pull request."
