@@ -1,6 +1,6 @@
 ---
 name: work-story
-description: Take a tracked development story from readiness assessment through implementation and a ready-for-review pull request. Use when Codex is asked to work, implement, complete, or pick up a story or issue end to end. Gate the work with $analyze-requirements, create an isolated worktree from the latest default branch only when ready, produce a plan with $plan-implementation, create and pursue a goal, verify the result, and publish the completed branch without merging it.
+description: 'Take a tracked development story from readiness assessment through implementation and a ready-for-review pull request. Use for requests such as "start story #123", "begin work on XYZ", "start on the next story on the board", or other requests to start, implement, complete, or pick up a story or issue end to end. Gate the work with $analyze-requirements, create an isolated worktree from the latest default branch only when ready, produce a plan with $plan-implementation, create and pursue a goal, verify the result, and publish the completed branch without merging it.'
 ---
 
 # Work Story
