@@ -8,12 +8,17 @@ Apply it after the ordered workflow has already normalized the request and inspe
 
 Break the request into the smallest set of independently valuable, implementable stories.
 
-Each story should be:
+Each story should:
 
-- meaningful on its own
-- reviewable on its own
-- small enough to execute without excessive hidden scope
-- explicit about dependencies when it cannot stand alone
+- be a whole slice of functionality that can be tested. A tester should be able to invoke a behavior/action and observe the results.
+- delivery only a single feature or bug fix
+- explicit about dependencies that block it
+
+A story should never be:
+
+- just scaffolding
+- only an implementation layer
+- dependent on cronologically later stories before its feature/bug fix can be delivered
 
 ## Decomposition Rules
 

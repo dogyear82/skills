@@ -27,7 +27,7 @@ Compare the requested behavior with the current implementation. Identify affecte
 Separate confirmed facts from assumptions and open questions. Ask the user only when an unanswered question would substantially change scope, architecture, public behavior, data handling, or the plan itself. Otherwise state the assumption and its effect.
 
 6. Write the implementation plan.
-Use the compact structure in [references/implementation-plan-template.md](references/implementation-plan-template.md) by default: Goal, Changes, Tests, and, when relevant, Rollout, Risks, Assumptions, and Open Questions. Include exact paths and symbols when verified. Expand the format only when complexity or uncertainty makes the extra detail useful. Save the plan in either a .md file in /references at the root of the repo, on the work item, or in an external context store such as Notion.
+Use the compact structure in [references/implementation-plan-template.md](references/implementation-plan-template.md) by default: Goal, Changes, Tests, and, when relevant, Rollout, Risks, Assumptions, and Open Questions. Include exact paths and symbols when verified. Expand the format only when complexity or uncertainty makes the extra detail useful. Save the plan in either a .md file in /docs/plans at the root of the repo, on the work item, or in an external context store such as Notion.
 
 7. Check the plan.
 Confirm that every acceptance criterion maps to a proposed change and verification. Ensure the sequence respects dependencies, names relevant tests, identifies meaningful risks, and contains enough evidence for another developer to begin without repeating the investigation.
