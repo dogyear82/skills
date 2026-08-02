@@ -13,7 +13,7 @@ Take a tracked story from readiness assessment through a verified implementation
 
 Before each phase, inspect the skills available in the current runtime and invoke those whose triggers match the work. The workflow depends on completed outcomes, not particular skill names.
 
-1. Resolve the story and repository guidance. Retrieve the named tracked story, or use the story text supplied by the user. Read linked specifications, documentation, acceptance criteria, applicable `AGENTS.md`, repository guidance, and tracker guidance. Determine the default integration branch.
+1. Before assessing readiness or making any mutation, resolve the story and repository guidance with read-only evidence gathering. Retrieve the named tracked story, or use the story text supplied by the user. If asked to start on the next story on a board, identify the applicable board from repository, tracker, and user context; use that board's ordering and status conventions to select the next eligible story. Ask one concise clarifying question only when the board or its ordering cannot be determined safely; never select arbitrarily. Read linked specifications, documentation, acceptance criteria, applicable `AGENTS.md`, repository guidance, tracker guidance and issue history, current relevant implementation and tests, and recent relevant changes or releases when applicable. Determine the default integration branch. Compare the requested outcome with this evidence to establish whether a current unmet need remains.
 
 2. Assess readiness. Check the story's relevance, atomicity, complete slice, and acceptance criteria, and apply any repository Definition of Ready. Require a current unmet need, one coherent outcome, a complete observable and testable slice, and clear testable acceptance criteria.
 
@@ -21,7 +21,7 @@ Before each phase, inspect the skills available in the current runtime and invok
 
 4. Create an isolated worktree from the latest remote default branch. Fetch it, confirm that no active branch or worktree conflicts with the story, and follow repository naming and location conventions. Otherwise use `agent/<story-key>-<short-slug>` and a sibling worktree named `<repository>-<story-key>-<short-slug>`. Perform all remaining work in that worktree.
 
-5. Investigate and write an implementation plan. Work in the new worktree, inspect relevant implementations and tests, identify existing patterns, and produce a plan covering every acceptance criterion with no blocking open question. Save it using repository conventions.
+5. Investigate and write an implementation plan. Work in the new worktree, inspect relevant implementations and tests, identify existing patterns, and save a plan using repository conventions. The plan must map every acceptance criterion and identify affected files or areas, tests and manual verification, risks, and assumptions; it must contain no blocking open question.
 
 6. Establish one explicit goal covering implementation, verification of every acceptance criterion, synchronization with the default branch, and publication of a ready-for-review pull request. Do not set a token budget unless the user requested one.
 
