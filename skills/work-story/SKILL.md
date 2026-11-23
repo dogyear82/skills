@@ -21,7 +21,7 @@ This workflow includes pushing the story branch and opening a ready-for-review p
 
 3. Stop when not ready. Do not create a branch, worktree, implementation plan, or goal. State concise reasons and the information or decision needed to make the story ready. Ask a question only when the user can resolve it immediately.
 
-4. Create an isolated worktree from the latest remote default branch. Fetch it, confirm that no active branch or worktree conflicts with the story, and follow repository naming and location conventions. Otherwise use `{{agent-name}}/<story-key>-<short-slug>` and a sibling worktree named `<repository>-<story-key>-<short-slug>`. Perform all remaining work in that worktree.
+4. Create an isolated worktree from the latest remote default branch. Fetch it, confirm that no active branch or worktree conflicts with the story, and follow repository naming and location conventions. Otherwise use `<agent-name>/<story-key>-<short-slug>` and a sibling worktree named `<repository>-<story-key>-<short-slug>`. Perform all remaining work in that worktree.
 
 5. Produce an implementation plan in the new worktree using applicable planning skills and repository conventions. Require a mapping of every acceptance criterion to automated checks, affected files or areas, risks, and assumptions, with no blocking open question.
 
