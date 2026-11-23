@@ -7,11 +7,13 @@ description: 'Use when asked to "start story #123", "begin work on XYZ", "start 
 
 ## Overview
 
-Take a tracked story from readiness assessment through a verified implementation and ready-for-review pull request. Stop early when the story is not ready.
+Take a tracked story from readiness assessment through a verified implementation and ready-for-review pull request. Stop early when the story is not ready. Discover each repository's standards, tools, test commands, and CI requirements; do not assume a particular language, framework, tracker, hosting provider, or development environment.
 
 ## Workflow
 
-Before each phase, inspect the skills available in the current runtime and invoke those whose triggers match the work. The workflow depends on completed outcomes, not particular skill names.
+Before each phase, inspect the skills available in the current runtime and invoke those whose triggers match the work. Delegate planning, implementation, testing, and code-review procedures to applicable skills; supply them with the story, acceptance criteria, and applicable repository standards. Their procedures must satisfy this skill's readiness, automated verification, and delivery requirements. If no applicable skill is available, perform the phase directly. No particular skill package, including Superpowers, is required.
+
+This workflow includes pushing the story branch and opening a ready-for-review pull request; do not introduce a separate integration-choice checkpoint for those steps. It does not authorize merging. Apply the user's existing authorization and repository guidance throughout.
 
 1. Before assessing readiness or making any mutation, resolve the story and repository guidance with read-only evidence gathering. Retrieve the named tracked story, or use the story text supplied by the user. If asked to start on the next story on a board, identify the applicable board from repository, tracker, and user context; use that board's ordering and status conventions to select the next eligible story. Ask one concise clarifying question only when the board or its ordering cannot be determined safely; never select arbitrarily. Read linked specifications, documentation, acceptance criteria, applicable `AGENTS.md`, repository guidance, tracker guidance and issue history, current relevant implementation and tests, and recent relevant changes or releases when applicable. Determine the default integration branch. Compare the requested outcome with this evidence to establish whether a current unmet need remains.
 
@@ -19,19 +21,28 @@ Before each phase, inspect the skills available in the current runtime and invok
 
 3. Stop when not ready. Do not create a branch, worktree, implementation plan, or goal. State concise reasons and the information or decision needed to make the story ready. Ask a question only when the user can resolve it immediately.
 
-4. Create an isolated worktree from the latest remote default branch. Fetch it, confirm that no active branch or worktree conflicts with the story, and follow repository naming and location conventions. Otherwise use `agent/<story-key>-<short-slug>` and a sibling worktree named `<repository>-<story-key>-<short-slug>`. Perform all remaining work in that worktree.
+4. Create an isolated worktree from the latest remote default branch. Fetch it, confirm that no active branch or worktree conflicts with the story, and follow repository naming and location conventions. Otherwise use `{{agent-name}}/<story-key>-<short-slug>` and a sibling worktree named `<repository>-<story-key>-<short-slug>`. Perform all remaining work in that worktree.
 
-5. Investigate and write an implementation plan. Work in the new worktree, inspect relevant implementations and tests, identify existing patterns, and save a plan using repository conventions. The plan must map every acceptance criterion and identify affected files or areas, tests and manual verification, risks, and assumptions; it must contain no blocking open question.
+5. Produce an implementation plan in the new worktree using applicable planning skills and repository conventions. Require a mapping of every acceptance criterion to automated checks, affected files or areas, risks, and assumptions, with no blocking open question.
 
-6. Establish one explicit goal covering implementation, verification of every acceptance criterion, synchronization with the default branch, and publication of a ready-for-review pull request. Do not set a token budget unless the user requested one.
+6. Track implementation, acceptance verification, synchronization with the default branch, and publication of a ready-for-review pull request in the implementation plan. Create a goal only when the user explicitly requests one. Do not set a token budget unless the user requested one.
 
-7. Implement the smallest coherent change described by the plan. Follow existing patterns, reuse existing utilities, avoid unrelated changes, add or update tests alongside behavior, and commit small working changes with concise messages.
+7. Execute the plan using applicable implementation and testing skills. Require the smallest coherent change, reuse of existing patterns and utilities, tests for changed behavior, and small working commits. Preserve unrelated changes and keep the work within the story scope.
 
-8. Verify acceptance criteria and review the diff. Run relevant tests, linting, type checking, and build; manually verify acceptance criteria when required. Review the complete diff against the default branch for correctness, missing tests, unrelated changes, and generated or temporary files. Fix material findings.
+8. Obtain automated acceptance evidence and a review of the complete diff against the default branch using applicable verification and code-review skills. Apply the Automated Verification requirements below. Require review for correctness, missing tests, unrelated changes, and generated or temporary files; resolve material findings before publication.
 
-9. Rebase, rerun checks, push, and open a non-draft pull request. Fetch the latest default branch, rebase the story branch without discarding unrelated work, rerun affected checks, push the branch, and open a ready-for-review pull request targeting the default branch. Include the outcome, implementation summary, verification, risks, and manual test instructions.
+9. Rebase, rerun checks, push, and open a non-draft pull request. Fetch the latest default branch, rebase the story branch without discarding unrelated work, rerun affected checks, push the branch, and open a ready-for-review pull request targeting the default branch. Include the outcome, implementation summary, acceptance evidence, verification commands and results, and material risks or unverified criteria. Follow required CI checks through completion and resolve failures caused by the change. Do not add routine manual test instructions.
 
-10. Complete the goal only when the pull request is ready: every acceptance criterion is verified, required checks pass, the branch is synchronized, and the pull request is open and ready for review. Do not merge the pull request or delete the branch or worktree.
+10. Complete the work, and any explicitly requested goal, only when the pull request is ready: every acceptance criterion is verified, required checks pass, the branch is synchronized, and the pull request is open and ready for review. Do not merge the pull request or delete the branch or worktree.
+
+## Automated Verification
+
+- Discover verification commands and required services from repository guidance, build scripts, existing tests, and CI configuration. Reuse the existing harness rather than prescribing a particular stack.
+- Map every acceptance criterion to an observable automated check at the appropriate layer. Reuse coverage that proves the criterion; add or update focused tests when coverage is missing. For user-facing behavior, use the repository's browser or end-to-end harness when needed to verify the complete interaction.
+- Run checks through test commands or CI. Do not routinely launch a separate development environment, leave an app running, perform manual browser click-throughs, or ask the user to test the change. Tests may start temporary applications, databases, or other services they need; use isolated state and ensure cleanup on success and failure.
+- If no suitable harness exists, add the smallest reusable automation needed for the story when it fits the scope. If meaningful verification needs substantial new infrastructure or unavailable access, report the concrete gap and leave the affected acceptance criterion unverified. Do not silently substitute manual testing or claim completion.
+- If the user explicitly requests a running environment or manual testing, perform it within that authorization. If repository guidance explicitly requires manual verification, surface the conflict with this automated workflow before proceeding with that step.
+- Run checks appropriate to the changed behavior and all required repository gates. After a rebase or fix, rerun affected checks; repeat broader checks only when changes or unresolved failures warrant it. Record observed results, including failures and skips. A skipped required check is not a pass.
 
 ## Operating Rules
 
@@ -50,8 +61,8 @@ Execution is complete only when:
 - the story passed the readiness assessment
 - the work was performed in its isolated worktree and branch
 - the implementation follows the plan and satisfies every acceptance criterion
-- relevant automated and manual verification passed
+- every acceptance criterion has automated evidence and relevant required checks passed
 - the final diff is reviewed and contains no unrelated or temporary files
 - the branch is rebased onto the latest default branch
 - a non-draft pull request is open and ready for review
-- the goal is marked complete
+- all explicitly requested goals are marked complete
